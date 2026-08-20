@@ -190,6 +190,16 @@
       color: var(--gold); line-height: 1;
     }
 
+    .motivation-line {
+      padding: 10px 20px 2px;
+      text-align: center;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 18px;
+      line-height: 1.35;
+      color: var(--text2);
+    }
+
     .milestones-block {
       background: var(--s1); border: 1px solid var(--border);
       border-radius: 22px; padding: 22px 20px;
@@ -237,11 +247,27 @@
     }
     .milestone-item.open .milestone-chevron { transform: rotate(180deg); }
 
-    .milestone-fact-wrap { display: none; padding: 0 14px 12px 32px; }
+    .milestone-fact-wrap { display: none; padding: 2px 14px 15px 32px; }
     .milestone-item.open .milestone-fact-wrap { display: block; }
-    .milestone-fact { font-size: 12px; line-height: 1.7; font-weight: 300; color: var(--muted); }
-    .milestone-item.done .milestone-fact { color: #5a9a6a; }
-    .milestone-item.next .milestone-fact { color: #8a72cc; }
+    .milestone-facts { display: flex; flex-direction: column; gap: 11px; }
+    .milestone-line { display: grid; grid-template-columns: 62px 1fr; gap: 10px; align-items: start; }
+    .milestone-category {
+      padding-top: 2px;
+      font-size: 9px;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+    .milestone-category.body { color: var(--accent2); }
+    .milestone-category.mind { color: var(--accent); }
+    .milestone-category.moment { color: var(--gold); }
+    .milestone-copy { font-size: 12px; line-height: 1.62; font-weight: 300; color: var(--muted); }
+    .milestone-line.moment .milestone-copy { color: var(--text2); }
+    .milestone-item.done .milestone-copy { color: #6d9f78; }
+    .milestone-item.done .milestone-line.moment .milestone-copy { color: #9dc4a6; }
+    .milestone-item.next .milestone-copy { color: #9b8bd0; }
+    .milestone-item.next .milestone-line.moment .milestone-copy { color: #c4b5fd; }
 
     .milestone-note {
       margin-top: 14px;
@@ -250,6 +276,11 @@
       text-align: center;
       color: var(--muted);
       opacity: 0.8;
+    }
+
+    @media (max-width: 340px) {
+      .milestone-line { grid-template-columns: 1fr; gap: 3px; }
+      .milestone-category { padding-top: 0; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -298,13 +329,15 @@
         <div class="money-label">Geld bespaard</div>
         <div class="money-amount" id="moneyAmount">€ 0,00</div>
       </div>
+
+      <p class="motivation-line">Wat je vandaag volhoudt, maakt morgen net iets makkelijker.</p>
     </section>
 
     <section class="page" id="page-mijlpalen" role="tabpanel" aria-labelledby="tab-mijlpalen" hidden>
       <div class="milestones-block">
         <div class="block-title">Mijlpalen</div>
         <div class="milestone-list" id="milestoneList"></div>
-        <p class="milestone-note">Gezondheidseffecten verschillen per persoon. Deze mijlpalen zijn motivatie, geen vaste medische tijdlijn.</p>
+        <p class="milestone-note">Bij iedereen verlopen veranderingen anders en op een ander moment. De gezondheidsteksten beschrijven mogelijke effecten; de mijlpalen vieren vooral wat jij opbouwt.</p>
       </div>
     </section>
   </main>
@@ -314,7 +347,7 @@
   const TIME_ZONE = 'Europe/Amsterdam';
   const START_AT = new Date('2026-08-20T00:00:00+02:00');
   const START_DATE = { year: 2026, month: 8, day: 20 };
-  const RATE = 43.35;
+  const RATE = 35.25;
   const DAY_MS = 86400000;
   const HOUR_MS = 3600000;
 
@@ -326,18 +359,66 @@
   });
 
   const MILESTONES = [
-    { days: 1, fact: 'Je eerste volledige alcoholvrije dag. Vanaf hier bouw je je eigen reeks op, één kalenderdag tegelijk.' },
-    { days: 3, fact: 'Drie dagen op rij. Alcohol kan slaap verstoren; zonder alcohol krijgt je slaapritme ruimte om zich te herstellen. Hoe snel je iets merkt verschilt per persoon.' },
-    { days: 7, fact: 'Een volle week. Minder of geen alcohol verlaagt je blootstelling aan alcoholgerelateerde gezondheidsrisico’s.' },
-    { days: 14, fact: 'Twee weken. Let vooral op je eigen slaap, energie en stemming: herstel verloopt niet volgens één vaste tijdlijn.' },
-    { days: 21, fact: 'Drie weken. De belangrijkste winst hier is consistentie: je hebt 21 dagen achter elkaar een nieuw patroon volgehouden.' },
-    { days: 30, fact: 'Een maand. Langdurig minder of niet drinken is gunstiger voor de gezondheid dan meer drinken en vermindert de belasting door alcohol.' },
-    { days: 50, fact: 'Vijftig dagen. Je reeks wordt steeds sterker; gezondheidsveranderingen blijven individueel.' },
-    { days: 60, fact: 'Twee maanden. Minder alcohol hangt samen met minder risico op onder meer hoge bloeddruk, leverziekte en slechte slaap.' },
-    { days: 75, fact: '75 dagen. Bijna elf weken alcoholvrij — een stevige reeks, zonder te doen alsof ieder lichaam op exact dag 75 hetzelfde verandert.' },
-    { days: 100, fact: '100 dagen. Een duidelijke mijlpaal: honderd kalenderdagen zonder nieuwe alcoholconsumptie.' },
-    { days: 180, fact: 'Een half jaar. Langdurig minder of niet drinken verlaagt alcoholgerelateerde gezondheidsrisico’s ten opzichte van meer drinken.' },
-    { days: 365, fact: 'Een jaar. Een volledig alcoholvrij jaar is een grote gedragsmijlpaal; de precieze gezondheidswinst hangt af van persoon, voorgeschiedenis en eerdere inname.' },
+    {
+      days: 1,
+      body: 'Je eerste volledige alcoholvrije dag. Je lichaam hoeft geen nieuwe alcohol te verwerken en krijgt zo een dag zonder extra belasting door alcohol.',
+      mind: 'Alcohol kan je slaap verstoren. Zonder nieuwe alcohol krijgt je natuurlijke slaapritme weer ruimte, al kan je slaap in het begin nog wisselen.',
+      moment: 'Dag één staat. Iedere lange reeks begint precies hier.'
+    },
+    {
+      days: 3,
+      body: 'Je lichaam heeft drie dagen geen nieuwe alcohol hoeven verwerken. Veranderingen in je vochtbalans, spijsvertering en energieniveau kunnen merkbaar worden, maar dat verschilt per persoon.',
+      mind: 'Je slaap kan nog onrustig zijn, maar krijgt meerdere nachten achter elkaar de kans om zich zonder alcohol te stabiliseren.',
+      moment: 'Drie dagen. Je bent niet alleen begonnen — je bent al bezig.'
+    },
+    {
+      days: 7,
+      body: 'Een volle week zonder alcohol betekent een week zonder nieuwe alcoholbelasting. Dat betekent minder belasting door alcohol voor onder meer je lever, hart- en vaatstelsel en stofwisseling.',
+      mind: 'Sommige mensen merken dat ze helderder wakker worden of dat hun energie stabieler aanvoelt. Bij anderen duurt dat langer; beide zijn normaal.',
+      moment: 'Zeven dagen. Een hele week die jij zelf hebt opgebouwd.'
+    },
+    {
+      days: 14,
+      body: 'Twee weken zonder alcohol geven je lichaam langer de tijd om te herstellen, zonder telkens opnieuw alcohol te hoeven verwerken.',
+      mind: 'Slaap, concentratie en stemming kunnen geleidelijk verbeteren. Het tempo verschilt sterk per persoon.',
+      moment: 'Twee weken. Je hoeft niet iedere dag verschil te voelen om vooruit te gaan.'
+    },
+    {
+      days: 30,
+      body: 'Na ongeveer een maand zonder alcohol zijn in onderzoek verbeteringen gezien in onder meer bloeddruk, gewicht, insulinegevoeligheid en leverwaarden.',
+      mind: 'Na een maand zonder alcohol kunnen slaap, energie en mentale helderheid merkbaar anders aanvoelen.',
+      moment: 'Een maand. Dertig dagen die je stuk voor stuk aan dezelfde reeks hebt toegevoegd.'
+    },
+    {
+      days: 60,
+      body: 'Twee maanden zonder alcohol betekenen twee maanden zonder nieuwe alcoholbelasting voor onder meer je lever, hart- en vaatstelsel en stofwisseling. In die periode bouw je geen nieuwe blootstelling aan alcohol op.',
+      mind: 'Aandacht, geheugen, slaap en stemming kunnen verder herstellen. Dat verloopt niet volgens één vaste kalender.',
+      moment: 'Twee maanden. Dit is inmiddels veel meer dan een goed voornemen.'
+    },
+    {
+      days: 90,
+      body: 'Drie maanden zonder alcohol geven je stofwisseling en hart- en vaatstelsel een lange periode zonder de directe effecten van alcohol.',
+      mind: 'Na drie maanden krijg je een duidelijker beeld van hoe je natuurlijke slaap, energie en stemming zonder alcohol zijn.',
+      moment: 'Negentig dagen. Wat begon als ‘vandaag niet’, is drie maanden geworden.'
+    },
+    {
+      days: 100,
+      body: 'Honderd dagen zonder alcohol betekenen honderd dagen zonder nieuwe alcoholblootstelling. Daardoor stapelt de belasting door alcohol zich in die periode niet verder op.',
+      mind: 'Herstel van aandacht, geheugen en andere cognitieve functies kan maanden doorgaan, vooral na langduriger of zwaarder gebruik.',
+      moment: '100. Drie cijfers. Dit mag je best even laten binnenkomen.'
+    },
+    {
+      days: 180,
+      body: 'Een half jaar zonder alcohol betekent een half jaar zonder nieuwe blootstelling aan alcohol, een bekende risicofactor voor onder meer leverziekte, hoge bloeddruk en meerdere vormen van kanker.',
+      mind: 'Cognitief en emotioneel herstel kan nog maanden doorgaan. Langere tijd zonder alcohol geeft je brein daar tijd en ruimte voor.',
+      moment: 'Een half jaar. Denk even terug aan dag één — en kijk waar je nu staat.'
+    },
+    {
+      days: 365,
+      body: 'Een volledig jaar zonder alcohol betekent een jaar zonder nieuwe alcoholblootstelling. Dat verlaagt alcoholgerelateerde gezondheidsrisico’s ten opzichte van blijven drinken.',
+      mind: 'Een jaar lang heeft alcohol je slaap, stemming en cognitieve functies niet direct kunnen verstoren.',
+      moment: '365 dagen. Vier seizoenen, gewone dinsdagen, weekenden en alles ertussenin — en je bent doorgegaan.'
+    },
   ];
 
   function getDateParts(date) {
@@ -374,6 +455,13 @@
     button.setAttribute('aria-expanded', String(isOpen));
   }
 
+  function renderMilestoneLine(category, className, text) {
+    return '<div class="milestone-line ' + className + '">' +
+      '<span class="milestone-category ' + className + '">' + category + '</span>' +
+      '<span class="milestone-copy">' + text + '</span>' +
+    '</div>';
+  }
+
   function render() {
     const now = new Date();
     const days = getDays(now);
@@ -397,10 +485,11 @@
       const isNext = Boolean(nextMilestone && m.days === nextMilestone.days);
       const remaining = Math.max(0, m.days - days);
       const label = m.days === 1 ? '1 dag' : m.days + ' dagen';
+      const remainingLabel = remaining === 1 ? '1 dag' : remaining + ' dagen';
       let badge = '';
 
       if (done) badge = '<span class="milestone-badge">✓ behaald</span>';
-      else if (isNext) badge = '<span class="milestone-badge">nog ' + remaining + 'd</span>';
+      else if (isNext) badge = '<span class="milestone-badge">nog ' + remainingLabel + '</span>';
 
       return '<div class="milestone-item ' + (done ? 'done' : isNext ? 'next' : '') + '">' +
         '<button class="milestone-header" type="button" aria-expanded="false" onclick="toggleMilestone(this)">' +
@@ -409,7 +498,11 @@
           badge +
           '<span class="milestone-chevron" aria-hidden="true">▼</span>' +
         '</button>' +
-        '<div class="milestone-fact-wrap"><div class="milestone-fact">' + m.fact + '</div></div>' +
+        '<div class="milestone-fact-wrap"><div class="milestone-facts">' +
+          renderMilestoneLine('Lichaam', 'body', m.body) +
+          renderMilestoneLine('Hoofd', 'mind', m.mind) +
+          renderMilestoneLine('Moment', 'moment', m.moment) +
+        '</div></div>' +
       '</div>';
     }).join('');
   }
