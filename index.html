@@ -325,7 +325,7 @@
       <div class="milestones-block">
         <div class="block-title">Mijlpalen</div>
         <div class="milestone-list" id="milestoneList"></div>
-        <p class="milestone-note">Iedereen merkt veranderingen op een ander moment. De gezondheidsteksten beschrijven mogelijke effecten; de mijlpalen vieren vooral wat jij opbouwt.</p>
+        <p class="milestone-note">Bij iedereen verlopen veranderingen anders en op een ander moment. De gezondheidsteksten beschrijven mogelijke effecten; de mijlpalen vieren vooral wat jij opbouwt.</p>
       </div>
     </section>
   </main>
@@ -349,62 +349,62 @@
   const MILESTONES = [
     {
       days: 1,
-      body: 'Je eerste volledige alcoholvrije dag. Je lichaam hoeft geen nieuwe alcohol te verwerken en krijgt een dag zonder extra alcoholbelasting.',
-      mind: 'Alcohol kan je slaap verstoren. Zonder nieuwe alcohol krijgt je natuurlijke slaapritme weer ruimte, al kan slaap in het begin nog wisselen.',
+      body: 'Je eerste volledige alcoholvrije dag. Je lichaam hoeft geen nieuwe alcohol te verwerken en krijgt zo een dag zonder extra belasting door alcohol.',
+      mind: 'Alcohol kan je slaap verstoren. Zonder nieuwe alcohol krijgt je natuurlijke slaapritme weer ruimte, al kan je slaap in het begin nog wisselen.',
       moment: 'Dag één staat. Iedere lange reeks begint precies hier.'
     },
     {
       days: 3,
-      body: 'Drie dagen zonder nieuwe alcoholbelasting. Hydratatie, spijsvertering en energie kunnen rustiger of gelijkmatiger gaan aanvoelen, maar dat verschilt per persoon.',
-      mind: 'Je slaap kan nog onrustig zijn, maar krijgt meerdere nachten achter elkaar de kans om zonder alcohol te stabiliseren.',
+      body: 'Je lichaam heeft drie dagen geen nieuwe alcohol hoeven verwerken. Veranderingen in je vochtbalans, spijsvertering en energieniveau kunnen merkbaar worden, maar dat verschilt per persoon.',
+      mind: 'Je slaap kan nog onrustig zijn, maar krijgt meerdere nachten achter elkaar de kans zich zonder alcohol te stabiliseren.',
       moment: 'Drie dagen. Je bent niet alleen begonnen — je bent al bezig.'
     },
     {
       days: 7,
-      body: 'Een volle week zonder alcohol betekent een week minder belasting voor onder andere lever, bloeddruk en stofwisseling.',
-      mind: 'Sommige mensen merken helderder wakker worden of stabielere energie. Bij anderen duurt dat langer; beide zijn normaal.',
+      body: 'Een volle week zonder alcohol betekent een week zonder nieuwe alcoholbelasting voor je lichaam, waaronder je lever, hart- en vaatstelsel en stofwisseling.',
+      mind: 'Sommige mensen merken dat ze helderder wakker worden of dat hun energie stabieler aanvoelt. Bij anderen duurt dat langer; beide zijn normaal.',
       moment: 'Zeven dagen. Een hele week die jij zelf hebt opgebouwd.'
     },
     {
       days: 14,
-      body: 'Twee weken zonder alcohol geeft je lichaam langere tijd om te herstellen zonder steeds opnieuw alcohol te hoeven verwerken.',
+      body: 'Twee weken zonder alcohol geven je lichaam langer de tijd om te herstellen, zonder telkens opnieuw alcohol te hoeven verwerken.',
       mind: 'Slaap, concentratie en stemming kunnen geleidelijk verbeteren. Het tempo verschilt sterk per persoon.',
       moment: 'Twee weken. Je hoeft niet iedere dag verschil te voelen om vooruit te gaan.'
     },
     {
       days: 30,
-      body: 'Na ongeveer een maand abstinentie zijn in onderzoek verbeteringen gezien in onder meer bloeddruk, gewicht, insulinegevoeligheid en leverwaarden.',
-      mind: 'Een maand zonder de directe invloed van alcohol kan slaap, energie en mentale helderheid merkbaar anders laten voelen.',
+      body: 'Na ongeveer een maand zonder alcohol zijn in onderzoek verbeteringen gezien in onder meer bloeddruk, gewicht, insulinegevoeligheid en leverwaarden.',
+      mind: 'Na een maand zonder alcohol kunnen slaap, energie en mentale helderheid merkbaar anders aanvoelen.',
       moment: 'Een maand. Dertig dagen die je stuk voor stuk aan dezelfde reeks hebt toegevoegd.'
     },
     {
       days: 60,
-      body: 'Twee maanden zonder alcohol betekent langdurig minder belasting voor lever, hart en bloedvaten en minder cumulatieve blootstelling aan alcohol.',
-      mind: 'Aandacht, geheugen, slaap en stemming kunnen verder herstellen. Dat gebeurt niet volgens één vaste kalender.',
+      body: 'Twee maanden zonder alcohol betekenen twee maanden zonder nieuwe alcoholbelasting voor onder meer je lever, hart- en vaatstelsel en stofwisseling. Ook je totale blootstelling aan alcohol blijft afnemen.',
+      mind: 'Aandacht, geheugen, slaap en stemming kunnen verder herstellen. Dat verloopt niet volgens één vaste kalender.',
       moment: 'Twee maanden. Dit is inmiddels veel meer dan een goed voornemen.'
     },
     {
       days: 90,
-      body: 'Drie maanden zonder alcohol geeft je stofwisseling en cardiovasculaire systeem een lange periode zonder de directe effecten van alcohol.',
-      mind: 'Na drie maanden heb je een veel eerlijker beeld van hoe je natuurlijke slaap, energie en stemming zonder alcohol voelen.',
-      moment: 'Negentig dagen. Wat begon met vandaag niet, is drie maanden geworden.'
+      body: 'Drie maanden zonder alcohol geven je stofwisseling en hart- en vaatstelsel een lange periode zonder de directe effecten van alcohol.',
+      mind: 'Na drie maanden krijg je een duidelijker beeld van hoe je natuurlijke slaap, energie en stemming zonder alcohol zijn.',
+      moment: 'Negentig dagen. Wat begon als ‘vandaag niet’, is drie maanden geworden.'
     },
     {
       days: 100,
-      body: 'Honderd dagen betekent honderd dagen zonder nieuwe alcoholblootstelling en dus aanzienlijk minder cumulatieve belasting door alcohol.',
+      body: 'Honderd dagen zonder alcohol betekenen honderd dagen zonder nieuwe alcoholblootstelling. Daarmee voorkom je verdere cumulatieve belasting door alcohol.',
       mind: 'Herstel van aandacht, geheugen en andere cognitieve functies kan maanden doorgaan, vooral na langduriger of zwaarder gebruik.',
-      moment: '100. Drie cijfers. Deze mag je best even laten binnenkomen.'
+      moment: '100. Drie cijfers. Dit mag je best even laten binnenkomen.'
     },
     {
       days: 180,
-      body: 'Een half jaar zonder alcohol betekent veel minder cumulatieve blootstelling aan een bekende risicofactor voor onder meer leverziekte, hoge bloeddruk en meerdere vormen van kanker.',
-      mind: 'Cognitief en emotioneel herstel kan nog maanden doorgaan. Langdurige abstinentie geeft je brein daar tijd en ruimte voor.',
+      body: 'Een half jaar zonder alcohol betekent een half jaar zonder nieuwe blootstelling aan alcohol, een bekende risicofactor voor onder meer leverziekte, hoge bloeddruk en meerdere vormen van kanker.',
+      mind: 'Cognitief en emotioneel herstel kan nog maanden doorgaan. Langere tijd zonder alcohol geeft je brein daar tijd en ruimte voor.',
       moment: 'Een half jaar. Denk even terug aan dag één — en kijk waar je nu staat.'
     },
     {
       days: 365,
-      body: 'Een volledig jaar zonder alcohol betekent een jaar zonder nieuwe alcoholblootstelling. Dat is gunstig voor onder andere lever, bloeddruk, hart en je gezondheid op lange termijn.',
-      mind: 'Een jaar geeft slaap, stemming en cognitieve functies langdurig ruimte zonder de directe verstorende werking van alcohol.',
+      body: 'Een volledig jaar zonder alcohol betekent een jaar zonder nieuwe alcoholblootstelling. Dat verlaagt alcoholgerelateerde gezondheidsrisico’s ten opzichte van blijven drinken.',
+      mind: 'Een jaar lang heeft alcohol je slaap, stemming en cognitieve functies niet direct kunnen verstoren.',
       moment: '365 dagen. Vier seizoenen, gewone dinsdagen, weekenden en alles ertussenin — en je bent doorgegaan.'
     },
   ];
@@ -473,10 +473,11 @@
       const isNext = Boolean(nextMilestone && m.days === nextMilestone.days);
       const remaining = Math.max(0, m.days - days);
       const label = m.days === 1 ? '1 dag' : m.days + ' dagen';
+      const remainingLabel = remaining === 1 ? '1 dag' : remaining + ' dagen';
       let badge = '';
 
       if (done) badge = '<span class="milestone-badge">✓ behaald</span>';
-      else if (isNext) badge = '<span class="milestone-badge">nog ' + remaining + 'd</span>';
+      else if (isNext) badge = '<span class="milestone-badge">nog ' + remainingLabel + '</span>';
 
       return '<div class="milestone-item ' + (done ? 'done' : isNext ? 'next' : '') + '">' +
         '<button class="milestone-header" type="button" aria-expanded="false" onclick="toggleMilestone(this)">' +
